@@ -34,6 +34,7 @@
             <div>
                 <label for="tel">tel input type:</label>
                 <input type="tel" id="tel" name="tel">
+                <error-output class="tel-error" for="tel"></error-output>
             </div>
             <div>
                 <label for="search">Search input type: </label>
@@ -69,10 +70,20 @@
             email.addEventListener('input', function(){
             let emailRegex= new RegExp(/^[a-zA-z0-9]+([-.+_][a-zA-Z0-9]+)*[@][a-zA-z0-9]+([.][a-zA-z]{2,}){1,2}$/);
             if(emailRegex.test(email.value))
-            emailError.textContent="";
+                emailError.textContent="";
             else
-            emailError.textContent="Email is incorrect";
-         })
+                emailError.textContent="Email is incorrect";
+            })
+
+            const tel=document.querySelector('#tel');
+            const telError=document.querySelector('.tel-error');
+            tel.addEventListener('input', function(){
+                let telRegex = new RegExp(/^[0-9]{1,3}[ ][6-9][0-9]{9}$/);
+                if(telRegex.test(tel.value))
+                    telError.textContent="";
+                else
+                    telError.textContent="Incorrect Mobile Number";
+            })
 
             const salary=document.querySelector('#salary');
             const output=document.querySelector('.salary-output');
